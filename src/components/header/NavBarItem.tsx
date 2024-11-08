@@ -18,9 +18,9 @@ export const NavbarItem = ({ isSelected, children, href }: NavbarItemProps) => {
             px: 2,
             py: 1,
             fontWeight: isSelected ? "fontWeightBold" : "fontWeightMedium",
-            color: isSelected ? "primary.main" : "text.primary",
+            color: isSelected ? "#3358ff" : "text.primary",
             borderBottom: isSelected ? 2 : 0,
-            borderColor: isSelected ? "primary.main" : "transparent",
+            borderColor: isSelected ? "#3358ff" : "transparent",
           }}
         >
           <Typography>{children}</Typography>

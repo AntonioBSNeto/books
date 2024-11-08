@@ -19,7 +19,7 @@ export const Header = () => {
   }
 
   const defaultHeader = () => (
-    <AppBar position="static" color="default" sx={{ backgroundColor: 'white'}}>
+    <AppBar position="static" color="default" sx={{ backgroundColor: 'white', zIndex: 2 }}>
       <Container maxWidth="lg" sx={{ margin: '1.25rem 0' }}>
         <Toolbar disableGutters sx={{ justifyContent: { xs: 'center', sm: 'space-between' }, px: 2 }}>
           <Typography variant="h5" onClick={() => navigate('/home')}>BookStats</Typography>
@@ -46,7 +46,7 @@ export const Header = () => {
   )
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {sidebarMenu()}
       {defaultHeader()}
       {/* O outlet é usado para que o header que é comum a todas as telas seja carregado apenas uma vez */}
