@@ -17,14 +17,14 @@ const SidebarMenu = () => {
   };
 
   return (
-    <Box sx={(theme) => ({ [theme.breakpoints.down('sm')]: { opacity: '1' }, opacity: '0', zIndex: '2' })}>
+    <Box sx={(theme) => ({ [theme.breakpoints.down('sm')]: { opacity: '1' }, opacity: '0', zIndex: '3' })}>
       <IconButton 
         color="inherit" 
         aria-label="open drawer" 
         onClick={toggleDrawer(true)} 
         sx={{ position: 'fixed', top: '1.5rem', left: 4 }}
       >
-        <MenuIcon sx={{ width: 32, height: 32, backgroundColor: 'blue', borderRadius: 1, color: 'white', }} />
+        <MenuIcon sx={{ width: 32, height: 32, backgroundColor: '#3358ff', borderRadius: 1, color: 'white', }} />
       </IconButton>
       <Drawer
         anchor="left"
@@ -32,7 +32,7 @@ const SidebarMenu = () => {
         onClose={toggleDrawer(false)}
       >
         <Box
-          sx={{ width: 300, backgroundColor: 'blue', height: '100%', color: 'white' }}
+          sx={{ width: 300, backgroundColor: '#3358ff', height: '100%', color: 'white' }}
           role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
@@ -43,7 +43,7 @@ const SidebarMenu = () => {
               <CloseIcon sx={{ color: 'white', width: 16, height: 16 }} />
             </IconButton>
           </Box>
-          <Divider sx={{ backgroundColor: 'gray' }} />
+          <Divider sx={{ backgroundColor: 'white' }} />
           <List>
             <ListItem onClick={() => { navigate('/home'); setShowSideBar(false); }}>
               <ListItemIcon>

@@ -2,7 +2,7 @@ import API from './API'
 
 const apiKey: string | undefined = import.meta.env.VITE_API_KEY;
 
-export const getBooks = async (offset: number = 0, limit: number = 12, term: string = 'a') => {
+export const getBooks = async (term: string, offset: number, limit: number) => {
   try {
     const response = await API.get(`?q=${term}&key=${apiKey}&startIndex=${12*offset}&maxResults=${limit}`)
     return response.data
