@@ -16,12 +16,14 @@ export interface Book {
     };
     language: string;
     previewLink: string;
+    infoLink: string;
   }
   saleInfo: {
     saleability: 'NOT_FOR_SALE' | 'FOR_SALE';
     listPrice: {
       amount: number,
       currencyCode: string
-    }
+    },
+    buyLink: string;
   }
 }

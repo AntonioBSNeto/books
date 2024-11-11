@@ -1,5 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Chip, Rating, Typography } from "@mui/material"
-import { useNavigate } from "react-router-dom"
+import { Box, Button, Card, CardContent, CardMedia, Chip, Rating, Typography, Link } from "@mui/material"
 import { Book } from "../types/book"
 
 interface BookcardProps {
@@ -7,25 +6,24 @@ interface BookcardProps {
 }
 
 export const BookCard = ({ book }: BookcardProps) => {
-  const navigate = useNavigate()
-
   const renderPrice = () => {
     const isForSale = book.saleInfo.saleability === 'FOR_SALE';
     if (isForSale) {
       return (
         <>
-          <Typography variant="body2" fontSize='1.25em'>Preço</Typography>
-          <Typography variant="h6" fontWeight="600">
-            {new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
-            }).format(book?.saleInfo?.listPrice?.amount)}
-          </Typography>
+          <Button variant="contained" sx={{ borderRadius: '8px', color: 'white' }}>
+            <Link variant="h6" href={book.saleInfo.buyLink} rel="noopener" target="_blank" sx={{ color: 'white', textDecoration: 'none' }}>
+              {new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              }).format(book?.saleInfo?.listPrice?.amount)}
+            </Link>
+          </Button>
         </>
       )
     } else {
       return (
-        <Typography variant="h6" fontWeight="600">
+        <Typography variant="body1" sx={{ lineHeight: '44px'}}>
           Indisponível para venda
         </Typography>
       )
@@ -57,14 +55,15 @@ export const BookCard = ({ book }: BookcardProps) => {
         mx: 'auto'
       }}
     >
-      <CardMedia
-        component="img"
-        height="288"
-        image={book?.volumeInfo?.imageLinks?.smallThumbnail}
-        alt="book image"
-        sx={{ borderRadius: 1, mb: 2, cursor: 'pointer', objectFit: 'contain', minHeight: 208 }}
-        onClick={() => navigate(`/book/${book.id}`, { state: book })}
-      />
+      <Link variant="h6" href={book.volumeInfo.infoLink} rel="noopener" target="_blank" fontWeight="600">
+        <CardMedia
+          component="img"
+          height="288"
+          image={book?.volumeInfo?.imageLinks?.smallThumbnail}
+          alt="book image"
+          sx={{ borderRadius: 1, mb: 2, cursor: 'pointer', objectFit: 'contain', minHeight: 208 }}
+        />
+      </Link>
       <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h6" component="p" fontWeight="600" gutterBottom noWrap title={book?.volumeInfo?.title}>
           {book?.volumeInfo?.title}
@@ -77,10 +76,13 @@ export const BookCard = ({ book }: BookcardProps) => {
         <Box sx={{ display: 'flex', columnGap: '8px', height: '64px' }}>
           {renderCategories()}
         </Box>
-        <Rating name="read-only" value={book?.volumeInfo?.averageRating || 0}  precision={0.5} readOnly  />
+        <Rating name="read-only" value={book?.volumeInfo?.averageRating || 0} precision={0.5} readOnly />
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box sx={{marginTop: 2}}>
+          <Box sx={{ marginTop: 2, display: 'flex', flexDirection: 'column', rowGap: '8px' }}>
             {renderPrice()}
+            <Button variant="outlined" sx={{ borderRadius: '8px' }}>
+              <Link variant="h6" href={book.volumeInfo.previewLink} rel="noopener" target="_blank" sx={{ textDecoration: 'none', textTransform: 'capitalize' }}>Amostra Gratuita</Link>
+            </Button>
           </Box>
         </Box>
       </CardContent>
