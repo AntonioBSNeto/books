@@ -1,0 +1,28 @@
+.infinite-scroll-container {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr)); 
+  margin: auto;
+  overflow-x: hidden; 
+  overflow-y: hidden; 
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .infinite-scroll-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .infinite-scroll-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .infinite-scroll-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
