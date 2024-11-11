@@ -45,13 +45,13 @@ const SidebarMenu = () => {
           </Box>
           <Divider sx={{ backgroundColor: 'white' }} />
           <List>
-            <ListItem onClick={() => { navigate('/home'); setShowSideBar(false); }}>
+            <ListItem onClick={() => { navigate('/'); setShowSideBar(false); }}>
               <ListItemIcon>
                 <HomeIcon sx={{ color: 'white' }} />
               </ListItemIcon>
               <ListItemText primary="Home" sx={{ color: 'white' }} />
             </ListItem>
-            <ListItem onClick={() => { navigate('/product/add'); setShowSideBar(false); }}>
+            <ListItem onClick={() => { navigate('/dashboard'); setShowSideBar(false); }}>
               <ListItemIcon>
                 <DashboardIcon sx={{ color: 'white' }} />
               </ListItemIcon>
